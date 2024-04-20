@@ -1,36 +1,31 @@
 {
     "public":{
-        "chainName": "Cosmos",
-        "chainId": "{Chain ID}",
+        "chainName": "nesa",
+        "chainId": "nesa-testnet-1",
         "gtm": "{Add your Google Tag Manager ID here}",
         "slashingWindow": 10000,
         "uptimeWindow": 250,
         "initialPageSize": 30,
         "secp256k1": false,
-        "bech32PrefixAccAddr": "cosmos",
-        "bech32PrefixAccPub": "cosmospub",
-        "bech32PrefixValAddr": "cosmosvaloper",
-        "bech32PrefixValPub": "cosmosvaloperpub",
-        "bech32PrefixConsAddr": "cosmosvalcons",
-        "bech32PrefixConsPub": "cosmosvalconspub",
-        "bondDenom": "uatom",
+        "bech32PrefixAccAddr": "nesa",
+        "bech32PrefixAccPub": "nesapub",
+        "bech32PrefixValAddr": "nesavaloper",
+        "bech32PrefixValPub": "nesavaloperpub",
+        "bech32PrefixConsAddr": "nesavalcons",
+        "bech32PrefixConsPub": "nesavalconspub",
+        "bondDenom": "unes",
         "powerReduction": 1000000,
         "coins": [
             {
-                "denom": "uatom",
-                "displayName": "ATOM",
+                "denom": "unes",
+                "displayName": "NES",
                 "fraction": 1000000
-            }, 
-            {
-                "denom": "umuon",
-                "displayName": "MUON",
-                "fraction": 1000000
-            } 
+            }
         ],
         "ledger":{
             "coinType": 118,
-            "appName": "Cosmos",
-            "appVersion": "2.16.0",
+            "appName": "nesa",
+            "appVersion": "0.38.6",
             "gasPrice": 0.02
         },
         "modules": {
@@ -40,13 +35,13 @@
             "gov": true,
             "distribution": false
         },
-        "coingeckoId": "cosmos",
+        "coingeckoId": "nesa",
         "networks": "https://gist.githubusercontent.com/kwunyeung/8be4598c77c61e497dfc7220a678b3ee/raw/bd-networks.json",
         "banners": false
     },
     "remote":{
-        "rpc":"https://rpc.stargate.forbole.com:443",
-        "api":"https://api.stargate.forbole.com:443"
+        "rpc":"http://127.0.0.1:11007",
+        "api":"http://127.0.0.1:9032"
     },
     "debug": {
         "startTimer": true
