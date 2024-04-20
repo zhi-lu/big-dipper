@@ -54,7 +54,7 @@ chainStatus:
     startMessage: '这链将还有以下时间便会开始'
     stopWarning: '这链似乎已经停了 <em>{$time}</em>！ 请继续喂我吃新的区块 😭!'
     latestHeight: '最新区块高度'
-    averageBlockTime: '平均区块时间'
+    averageBlockTime: '最新区块时间'
     all: '全部'
     now: '现在'
     allTime: '全部'

@@ -15,7 +15,7 @@ export default class Block extends Component {
 
     render() {
         let homepage = window?.location?.pathname === '/' ? true : false;
-        let proposer = this.props.block.proposer();
+        let proposer = this.props.block.proposerAddress;
         let validator = Validators.findOne({ address: this.props.block.proposerAddress });
         let proposerOperatorAddress = validator?.operator_address ?? this.props?.block?.proposerAddress;
         if (proposer){

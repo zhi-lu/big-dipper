@@ -5,6 +5,7 @@ import numbro from 'numbro';
 import i18n from 'meteor/universe:i18n';
 import TimeStamp from '../components/TimeStamp.jsx';
 import Coin from '/both/utils/coins.js';
+import moment from 'moment';
 
 const T = i18n.createComponent();
 
@@ -29,7 +30,7 @@ export default class ChainStatus extends React.Component {
         if (prevProps != this.props){
             this.setState({
                 blockHeight: numbro(this.props.status.latestBlockHeight).format({thousandSeparated: true}),
-                blockTime: <TimeStamp time={this.props.status.latestBlockTime}/>,
+                blockTime: this.props.status.latestBlockTime,
                 delegatedTokens: numbro(this.props.status.totalVotingPower).format('0,0.00a'),
                 numValidators: this.props.status.validators,
                 totalNumValidators: this.props.status.totalValidators,
@@ -40,7 +41,7 @@ export default class ChainStatus extends React.Component {
             switch (this.state.avgBlockTimeType){
             case "":
                 this.setState({
-                    averageBlockTime: numbro(this.props.status.blockTime/1000).format('0,0.00')
+                    averageBlockTime: moment.for
                 })
                 break;
             case "m":
@@ -89,7 +90,7 @@ export default class ChainStatus extends React.Component {
             this.setState({
                 blockTimeText: <T>chainStatus.all</T>,
                 avgBlockTimeType: "",
-                averageBlockTime: numbro(this.props.status.blockTime/1000).format('0,0.00')
+                averageBlockTime: this.props.status.latestBlockTime
             })
             break;
         case "m":
@@ -157,27 +158,16 @@ export default class ChainStatus extends React.Component {
                             <Card body>
                                 <CardTitle><T>chainStatus.latestHeight</T></CardTitle>
                                 <CardText>
-                                    <span className="display-4 value text-primary">{this.state.blockHeight}</span>
-                                    {this.state.blockTime}
+                                    <span  style={{fontSize:'3.5rem'}} className="value text-primary">{this.state.blockHeight}</span>
+                                    {/* {this.state.blockTime} */}
                                 </CardText>
                             </Card>
                         </Col>
                         <Col lg={3} md={6}>
                             <Card body>
-                                <UncontrolledDropdown size="sm" className="more">
-                                    <DropdownToggle>
-                                        <i className="material-icons">more_vert</i>
-                                    </DropdownToggle>
-                                    <DropdownMenu>
-                                        <DropdownItem onClick={(e) => this.handleSwitchBlockTime("", e)}><T>chainStatus.allTime</T></DropdownItem>
-                                        {this.props.status.lastMinuteBlockTime?<DropdownItem onClick={(e) => this.handleSwitchBlockTime("m", e)}><T>chainStatus.lastMinute</T></DropdownItem>:''}
-                                        {this.props.status.lastHourBlockTime?<DropdownItem onClick={(e) => this.handleSwitchBlockTime("h", e)}><T>chainStatus.lastHour</T></DropdownItem>:''}
-                                        {this.props.status.lastDayBlockTime?<DropdownItem onClick={(e) => this.handleSwitchBlockTime("d", e)}><T>chainStatus.lastDay</T> </DropdownItem>:''}
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
-                                <CardTitle><T>chainStatus.averageBlockTime</T> ({this.state.blockTimeText})</CardTitle>
+                                <CardTitle><T>chainStatus.averageBlockTime</T></CardTitle>
                                 <CardText>
-                                    <span className="display-4 value text-primary">{this.state.averageBlockTime}</span><T>chainStatus.seconds</T>
+                                    <span style={{fontSize:'2.6rem'}} className="value text-primary">{moment( this.state.blockTime).format('YYYY-MM-DD HH:mm:ss')}</span><T>chainStatus.seconds</T>
                                 </CardText>
                             </Card>
                         </Col>

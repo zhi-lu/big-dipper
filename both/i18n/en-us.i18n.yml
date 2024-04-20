@@ -89,7 +89,7 @@ chainStatus:
     startMessage: 'The chain is going to start in'
     stopWarning: 'The chain appears to be stopped for <em>{$time}</em>! Feed me with new blocks 😭!'
     latestHeight: 'Latest Block Height'
-    averageBlockTime: 'Average Block Time'
+    averageBlockTime: 'Latest Block Time'
     all: 'All'
     now: 'Now'
     allTime: 'All Time'
@@ -103,7 +103,7 @@ chainStatus:
     fromTotalStakes: '{$percent} from {$totalStakes} {$denomPlural}'
 analytics:
     blockTimeHistory: 'Block Time History'
-    averageBlockTime: 'Average Block Time'
+    averageBlockTime: 'Latest Block Time'
     blockInterval: 'Block Interval'
     noOfValidators: 'No. of Validators'
 validators:
