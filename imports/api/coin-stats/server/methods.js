@@ -10,12 +10,14 @@ Meteor.methods({
             try{
                 let now = new Date();
                 now.setMinutes(0);
-                let url = "https://api.coingecko.com/api/v3/simple/price?ids="+coinId+"&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true";
+		// the current Bitcoin used to obtain the price, and use Nesa in the future. 
+                let coin = "bitcoin";
+                let url = "https://api.coingecko.com/api/v3/simple/price?ids="+coin+"&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true";
                 let response = HTTP.get(url);
                 if (response.statusCode == 200){
                     // console.log(JSON.parse(response.content));
                     let data = JSON.parse(response.content);
-                    data = data[coinId];
+                    data = data[coin];
                     // console.log(coinStats);
                     return CoinStats.upsert({last_updated_at:data.last_updated_at}, {$set:data});
                 }

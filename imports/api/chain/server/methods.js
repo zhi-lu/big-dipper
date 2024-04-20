@@ -43,7 +43,7 @@ Meteor.methods({
         this.unblock();
         let url = "";
         try{
-            url = API + '/blocks/latest';
+            url = API + '/cosmos/base/tendermint/v1beta1/blocks/latest';
             let response = HTTP.get(url);
             let latestBlock = JSON.parse(response.content);
 
@@ -111,10 +111,10 @@ Meteor.methods({
                 if ( Coin.StakingCoin.denom ) {
                     if (Meteor.settings.public.modules.bank){
                         try{
-                            url = API + '/cosmos/bank/v1beta1/supply/' + Coin.StakingCoin.denom;
+                            url = API + '/cosmos/bank/v1beta1/supply'
                             let response = HTTP.get(url);
                             let supply = JSON.parse(response.content);
-                            chainStates.totalSupply = parseInt(supply.amount.amount);
+                            chainStates.totalSupply = parseInt(supply.supply[0].amount);
                         }
                         catch(e){
                             console.log(e);
